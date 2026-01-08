@@ -4,7 +4,7 @@ import os
 import time
 
 # ================= CONFIG =================
-BOT_TOKEN = "PASTE_YOUR_NEW_BOT_TOKEN_HERE"
+BOT_TOKEN = "8509158944:AAEuA56g35ueD2-3vh92ejH6laXfuS6GC64"
 CHAT_ID = "1987110638"
 
 MAX_COINS = 5
