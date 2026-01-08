@@ -1,9 +1,9 @@
 name: Listing Finder Bot
 
 on:
-  workflow_dispatch:
   schedule:
-    - cron: "0 */6 * * *"
+    - cron: "*/1 * * * *"
+  workflow_dispatch:
 
 jobs:
   run-bot:
@@ -19,3 +19,9 @@ jobs:
       - run: pip install requests
 
       - run: python bot.py
+
+      - name: Upload CSV
+        uses: actions/upload-artifact@v3
+        with:
+          name: listing-coins
+          path: output.csv
