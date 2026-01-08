@@ -7,6 +7,7 @@ CHAT_ID = 1987110638
 
 MAX_COINS = 5
 SENT_FILE = "sent_tokens.txt"
+MIN_MARKET_CAP = 1_000_000   # ✅ minimum 1 million
 
 
 def load_sent_tokens():
@@ -68,13 +69,16 @@ def main():
         if coin_id in sent_tokens:
             continue
 
+        cap = c["market_cap"] or 0
+        if cap < MIN_MARKET_CAP:          # ✅ market cap filter
+            continue
+
         tg_link = get_telegram_group(coin_id)
         if not tg_link:
             continue
 
         name = c["name"]
         symbol = c["symbol"].upper()
-        cap = c["market_cap"]
 
         # 🔹 MESSAGE 1: TOKEN INFO
         send_message(
