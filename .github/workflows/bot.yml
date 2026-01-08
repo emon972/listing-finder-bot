@@ -19,3 +19,11 @@ jobs:
       - run: pip install requests
 
       - run: python bot.py
+
+      - name: Commit sent tokens
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add sent_tokens.txt
+          git commit -m "Update sent tokens" || echo "No changes"
+          git push
